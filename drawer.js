@@ -45,8 +45,8 @@ class ScrollDrawer extends HTMLElement {
     mask-image: url(mask.svg);
     -webkit-mask-size: cover;
     mask-size: cover;
-    -webkit-mask-position: left calc(((var(--vw) / 390) * 60 - 60) * -1px);
-    mask-position: left calc(((var(--vw) / 390) * 60 - 60) * -1px);
+    -webkit-mask-position: left calc(((var(--vw) / 390) * 60 - 60) * -1px - 9px);
+    mask-position: left calc(((var(--vw) / 390) * 60 - 60) * -1px - 9px);
   }
 
   // .drawer::before {
