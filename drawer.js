@@ -25,6 +25,7 @@ class ScrollDrawer extends HTMLElement {
   }
 
   .drawer {
+    --vw: 390;
     --top-margin: 60px;
     overflow-y: auto;
     padding: 0;
@@ -33,16 +34,19 @@ class ScrollDrawer extends HTMLElement {
     z-index: 1;
     grid-column: 2/3;
     grid-row: 1/2;
-    max-block-size: 100vh;
+    max-block-size: 100dvh;
     position: fixed;
     inset: 0;
     scroll-snap-type: y mandatory;
     display: grid;
-    grid-template-rows: 39vh calc(61vh + 1px) 1fr;
+    grid-template-rows: 39dvh calc(61dvh + 1px) 1fr;
 
     -webkit-mask-image: url(mask.svg);
     mask-image: url(mask.svg);
-
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: left calc(((var(--vw) / 390) * 60 - 60) * -1px);
+    mask-position: left calc(((var(--vw) / 390) * 60 - 60) * -1px);
   }
 
   // .drawer::before {
@@ -178,6 +182,8 @@ class ScrollDrawer extends HTMLElement {
       threshold: 0.0,
     });
     this.observer.observe(this.body);
+
+    this.root.style.setProperty("--vw", window.innerWidth);
   }
 
   disconnectedCallback() {
